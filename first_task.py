@@ -3,12 +3,14 @@ import datetime
 
 def get_days_from_today(date: str) -> int:
     '''
-    Calculate the number of days between the current date and the specified date.
+    Calculate the number of days between the current date and the specified
+    date.
 
     :param date: string
 
     :return: integer
     '''
+    
     try:
         given: datetime = datetime.datetime.strptime(date, '%Y-%m-%d')
     except Exception:
