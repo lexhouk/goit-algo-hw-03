@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, date as date_only
 
 
 def get_days_from_today(date: str) -> int:
@@ -12,9 +12,9 @@ def get_days_from_today(date: str) -> int:
     '''
     
     try:
-        given: datetime = datetime.datetime.strptime(date, '%Y-%m-%d')
+        given: datetime = datetime.strptime(date, '%Y-%m-%d')
     except Exception:
         print('The "date" argument must match this pattern: "YYYY-MM-DD"!')
         return None
     
-    return (given.date() - datetime.date.today()).days
+    return (date_only.today() - given.date()).days

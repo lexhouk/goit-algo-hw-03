@@ -10,8 +10,11 @@ def normalize_phone(phone_number: str) -> str:
 
     :return: string
     '''
+    
     try:
         phone_number = re.sub(r'[^+\d]', '', phone_number)
     except TypeError:
+        print('Phone number must be text string!')
         return phone_number
+    
     return '+38'[:13 - len(phone_number)] + phone_number
