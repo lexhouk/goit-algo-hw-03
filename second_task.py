@@ -20,13 +20,9 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
         # thousand.
         is_max_valid = max < 1001
 
-        # The number of generated numbers must be between the smallest and
-        # largest numbers.
-        is_quantity_valid = min < quantity < max
-       
         # The number of generated numbers must not exceed the number of numbers
         # between the smallest and largest numbers.
-        is_quantity_valid = is_quantity_valid and quantity < max - min
+        is_quantity_valid = quantity < max - min
     
     except TypeError:
         print('All arguments must be integer numbers!')
