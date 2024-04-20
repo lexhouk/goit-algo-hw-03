@@ -18,17 +18,25 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
 
         # The largest generated number must be less than or equal to one
         # thousand.
-        is_max_valid = max < 1001
+        is_max_valid = min <= max < 1001
+
+        # Calculate the amount of numbers in sequence.
+        max_quantity = max - min + 1
 
         # The number of generated numbers must not exceed the number of numbers
         # between the smallest and largest numbers.
-        is_quantity_valid = quantity < max - min
+        is_quantity_valid = quantity <= max_quantity
     
     except TypeError:
         print('All arguments must be integer numbers!')
         return []
     
     if is_min_valid and is_max_valid and is_quantity_valid:
+        # There is no point in guessing numbers when they are at their maximum,
+        # so it is enough to just return a sorted sequence.
+        if quantity == max_quantity:
+            return list(range(min, max + 1))
+        
         numbers = set()
 
         while len(numbers) < quantity:
